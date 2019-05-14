@@ -1,0 +1,251 @@
+<div class="container col-12"></div>
+    <div class="row">
+      <div class="col-sm-8">
+      <h4 class="container">Enter Person Details </h4>
+    </div>
+    <div id="addButton" class="col-sm-4">
+          <button class="btn btn-info btn-lg" (click)="check()">
+          <span class="glyphicon glyphicon-plus"></span> Add a new person 
+        </button>
+    </div>
+</div>
+<form
+  name="personForm"
+  [formGroup]="personForm"
+  (ngSubmit)="onSubmit(personForm.value)"
+>
+  <div class="form-group col-4">
+    <label for="FullName">Full Name</label>
+    <input
+      id="FullName"
+      type="text"
+      class="form-control"
+      name="FullName"
+      formControlName="FullName"
+    />
+  </div>
+
+  <div
+    *ngIf="
+      personForm.controls['FullName'].invalid &&
+      (personForm.controls['FullName'].dirty ||
+        personForm.controls['FullName'].touched)
+    "
+    class="alert alert-danger col-4"
+  >
+    <div *ngIf="personForm.controls['FullName'].errors.required">
+      Name is required...
+    </div>
+    <div *ngIf="personForm.controls['FullName'].errors?.pattern">
+      Name only contains alphabets...
+    </div>
+  </div>
+
+  <div class="form-group col-4">
+    <label for="CensusHouseNumber">Census House Number</label>
+    <input
+      id="CensusHouseNumber"
+      type="text"
+      class="form-control"
+      name="CensusHouseNumber"
+      formControlName="CensusHouseNumber"
+    />
+  </div>
+
+  <div
+    *ngIf="
+      personForm.controls['CensusHouseNumber'].invalid &&
+      (personForm.controls['CensusHouseNumber'].dirty ||
+        personForm.controls['CensusHouseNumber'].touched)
+    "
+    class="alert alert-danger col-4"
+  >
+    <div *ngIf="personForm.controls['CensusHouseNumber'].errors.required">
+      census house number is required...
+    </div>
+    <div *ngIf="personForm.controls['CensusHouseNumber'].hasError('minlength')">
+      census house number is atleast 8 digit...
+    </div>
+    <div *ngIf="personForm.controls['CensusHouseNumber'].hasError('maxlength')">
+      census house number is not more than 19 digits...
+    </div>
+    <div *ngIf="personForm.controls['CensusHouseNumber'].hasError('CHNNotExists')">
+        Census House Number Does not exists please try a valid number...
+    </div>  
+    <div *ngIf="personForm.controls['CensusHouseNumber'].errors?.pattern">
+        Census House Number can only be a number of 16-digits no alphabets allowed...
+    </div>  
+  </div>
+
+  <div class="form-group col-4">
+    <label for="RelationshipWithOwner">Relationship With Owner</label>
+    <select
+      name="RelationshipWithOwner"
+      class="form-control"
+      id="RelationshipWithOwner"
+      formControlName="RelationshipWithOwner"
+    >
+      <option value="1">Self</option>
+      <option value="2">Spouse</option>
+      <option value="3">Son</option>
+      <option value="4">Daughter</option>
+      <option value="5">Sibling</option>
+      <option value="6">Grandson</option>
+      <option value="7">Granddaughter</option>
+    </select>
+  </div>
+
+  <div
+    *ngIf="
+      personForm.controls['RelationshipWithOwner'].invalid &&
+      (personForm.controls['RelationshipWithOwner'].dirty ||
+        personForm.controls['RelationshipWithOwner'].touched)
+    "
+    class="alert alert-danger col-4"
+  >
+    <div *ngIf="personForm.controls['RelationshipWithOwner'].errors.required">
+      This field is required is required...
+    </div>
+  </div>
+
+  <div class="form-group col-4">
+    <label for="Gender">Gender</label>
+    <select
+      name="Gender"
+      class="form-control"
+      id="Gender"
+      formControlName="Gender"
+    >
+     <option value="1">Male</option>
+      <option value="2">Female</option>
+    </select>
+  </div>
+
+  <div
+    *ngIf="
+      personForm.controls['Gender'].invalid &&
+      (personForm.controls['Gender'].dirty ||
+        personForm.controls['Gender'].touched)
+    "
+    class="alert alert-danger col-4"
+  >
+    <div *ngIf="personForm.controls['Gender'].errors.required">
+      This field is required is required...
+    </div>
+  </div>
+
+  <div class="form-group col-4">
+    <label for="DateOfBirth">Date Of Birth</label>
+    <input
+      id="DateOfBirth"
+      type="date"
+      class="form-control"
+      name="DateOfBirth"
+      formControlName="DateOfBirth"
+    />
+  </div>
+
+  <div
+    *ngIf="
+      personForm.controls['DateOfBirth'].errors &&
+      (personForm.controls['DateOfBirth'].dirty ||
+        personForm.controls['DateOfBirth'].touched)
+    "
+    class="alert alert-danger col-4"
+  >
+    <div *ngIf="personForm.controls['DateOfBirth'].errors.required">
+      This field is required is required...
+    </div>
+    <div *ngIf="personForm.controls['DateOfBirth'].hasError('DateOfBirtherr')">
+          Date of birth can not be beyond today's date....
+    </div>   
+  </div>
+
+  <div class="form-group col-4">
+    <label for="MaritalStatus">MaritalStatus</label>
+    <select
+      name="MaritalStatus"
+      class="form-control"
+      id="MaritalStatus"
+      formControlName="MaritalStatus"
+    >
+      <option value="1">Married</option>
+      <option value="2">Unmarried</option>
+    </select>
+  </div>
+
+  <div
+    *ngIf="
+      personForm.controls['MaritalStatus'].invalid &&
+      (personForm.controls['MaritalStatus'].dirty ||
+        personForm.controls['MaritalStatus'].touched)
+    "
+    class="alert alert-danger col-4"
+  >
+    <div *ngIf="personForm.controls['MaritalStatus'].errors.required">
+      This field is required is required...
+    </div>
+  </div>
+
+  <div *ngIf=" personForm.controls['MaritalStatus'].value == 1">
+        <div class="form-group col-4">
+          <label for="AgeAtMarriage">Age At Marriage</label>
+          <input
+            id="AgeAtMarriage"
+            type="number"
+            class="form-control"
+            name="AgeAtMarriage"
+            formControlName="AgeAtMarriage"
+          />
+        </div>
+          <div *ngIf="
+                personForm.controls['AgeAtMarriage'].invalid &&
+                (personForm.controls['AgeAtMarriage'].dirty ||
+                  personForm.controls['AgeAtMarriage'].touched)
+              "
+              class="alert alert-danger col-4"
+            >
+          <div *ngIf="personForm.controls['AgeAtMarriage'].errors?.pattern">
+              Age at marriage can only be a real number...
+          </div>
+            </div>
+  </div>
+
+  <div class="form-group col-4">
+    <label for="Occupation">Occupation</label>
+    <input
+      id="Occupation"
+      type="text"
+      class="form-control"
+      name="Occupation"
+      formControlName="Occupation"
+    />
+  </div>
+
+  <div class="form-group col-4">
+    <label for="NatureOfWork">Nature Of Work</label>
+    <input
+      id="NatureOfWork"
+      type="text"
+      class="form-control"
+      name="NatureOfWork"
+      formControlName="NatureOfWork"
+    />
+  </div>
+
+      <div class="form-group" align="center">
+          <div class="row">
+                <div class="col-sm-6">
+                          <button type="submit"
+            [disabled]="personForm.pristine || personForm.invalid" class="btn btn-success">
+            Register
+          </button>
+                </div>
+                <div class="com-sm-4">
+                    <li class="btn btn-danger" (click)="check()">Reset</li>
+                </div>
+  
+          </div>
+      </div> 
+  <br />
+</form>

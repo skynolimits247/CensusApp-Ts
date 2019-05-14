@@ -1,0 +1,13 @@
+<div class="row text-center"> 
+    <h4 class="text-center">Population Age-Wise Ratio</h4>
+  <div class="container col-sm-9">     
+<div class="col-sm-4 text-center">
+</div>
+    <canvas baseChart
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"
+          [options]="pieChartOptions"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+</div>

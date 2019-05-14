@@ -1,0 +1,298 @@
+        <div class="container">
+
+<div class="row">
+      <div class="col-sm-8">
+      <h4 class="container">Enter House Details</h4>
+    </div>
+    <div id="addButton" class="col-sm-4">
+          <button class="btn btn-info btn-lg" (click)="check()">
+          <span class="glyphicon glyphicon-plus"></span> Add a new house 
+        </button>
+    </div>
+</div>
+<form
+  [formGroup]="inputhouseform"
+  (ngSubmit)="onSubmit(inputhouseform.value)" novalidate>
+
+            <div class="form-group col-4">
+    <label for="CensusHouseNumber"> Census House Number : {{censusHouseNumber}} </label> 
+     <!-- <input
+     id="CensusHouseNumber"
+      type="text"
+      class="form-control"
+      name="CensusHouseNumber"
+      formControlName="CensusHouseNumber"
+      disabled/>  -->
+  </div>
+
+
+  <div class="form-group col-4">
+    <label for="building">Building #</label>
+    <input
+      id="building"
+      type="text"
+      class="form-control"
+      name="building"
+      formControlName="BuildingAptNumber"/>
+  </div>
+
+  <div
+    *ngIf="
+    inputhouseform.controls['BuildingAptNumber'].invalid &&
+      (inputhouseform.controls['BuildingAptNumber'].dirty ||
+      inputhouseform.controls['BuildingAptNumber'].touched)
+    "
+    class="alert alert-danger col-4"
+  >
+    <div *ngIf="inputhouseform.controls['BuildingAptNumber'].errors?.required">
+      Building number is required...
+    </div>
+  </div>
+
+  <div class="form-group col-4">
+    <label for="Line1">Line1</label>
+    <input
+      id="Line1"
+      type="text"
+      class="form-control"
+      name="Line1"
+      formControlName="Line1"
+    />
+  </div>
+
+  <div
+    *ngIf="
+    inputhouseform.controls['Line1'].invalid &&
+      (inputhouseform.controls['Line1'].dirty ||
+      inputhouseform.controls['Line1'].touched)
+    "
+    class="alert alert-danger col-4">
+    <div *ngIf="inputhouseform.controls['Line1'].errors.required">
+      Line1 is required...
+    </div>    
+  </div>
+
+  
+    <div class="form-group col-4">
+    <label for="StreetName">Street Name</label>
+    <input
+      id="StreetName"
+      type="text"
+      class="form-control"
+      name="StreetName"
+      formControlName="StreetName"
+    />
+  </div>
+
+  <div
+    *ngIf="
+    inputhouseform.controls['StreetName'].invalid &&
+      (inputhouseform.controls['StreetName'].dirty ||
+      inputhouseform.controls['StreetName'].touched)
+    "
+    class="alert alert-danger col-4">
+    <div *ngIf="inputhouseform.controls['StreetName'].errors.required">
+      StreetName is required...
+    </div>    
+  </div>
+
+    <div class="form-group col-4">
+    <label for="City">City</label>
+    <input
+      id="City"
+      type="text"
+      class="form-control"
+      name="City"
+      formControlName="City"
+    />
+  </div>
+
+  <div
+    *ngIf="
+    inputhouseform.controls['City'].invalid &&
+      (inputhouseform.controls['City'].dirty ||
+      inputhouseform.controls['City'].touched)
+    "
+    class="alert alert-danger col-4">
+    <div *ngIf="inputhouseform.controls['City'].errors.required">
+      City is required...
+    </div>    
+    <div *ngIf="inputhouseform.controls['City'].errors?.pattern">
+        This field contains alphabets only...
+    </div> 
+  </div>
+
+
+
+
+  <div class="form-group col-4">
+    <label for="State">Select State</label>    
+    <select name="State" class="form-control" id="State" formControlName="State">
+        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+        <option value="Assam">Assam</option>
+        <option value="Bihar">Bihar</option>
+        <option value="Chandigarh">Chandigarh</option>
+        <option value="Chhattisgarh">Chhattisgarh</option>
+        <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+        <option value="Daman and Diu">Daman and Diu</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Goa">Goa</option>
+        <option value="Gujarat">Gujarat</option>
+        <option value="Haryana">Haryana</option>
+        <option value="Himachal Pradesh">Himachal Pradesh</option>
+        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+        <option value="Jharkhand">Jharkhand</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Kerala">Kerala</option>
+        <option value="Lakshadweep">Lakshadweep</option>
+        <option value="Madhya Pradesh">Madhya Pradesh</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="Manipur">Manipur</option>
+        <option value="Meghalaya">Meghalaya</option>
+        <option value="Mizoram">Mizoram</option>
+        <option value="Nagaland">Nagaland</option>
+        <option value="Orissa">Orissa</option>
+        <option value="Pondicherry">Pondicherry</option>
+        <option value="Punjab">Punjab</option>
+        <option value="Rajasthan">Rajasthan</option>
+        <option value="Sikkim">Sikkim</option>
+        <option value="Tamil Nadu">Tamil Nadu</option>
+        <option value="Tripura">Tripura</option>
+        <option value="Uttaranchal">Uttaranchal</option>
+        <option value="Uttar Pradesh">Uttar Pradesh</option>
+        <option value="West Bengal">West Bengal</option>
+      </select>
+  </div>  
+
+  <div
+    *ngIf="
+    inputhouseform.controls['State'].invalid &&
+      (inputhouseform.controls['State'].dirty ||
+      inputhouseform.controls['State'].touched)
+    "
+    class="alert alert-danger col-4"
+  >
+    <div *ngIf="inputhouseform.controls['State'].errors.required">
+      This State is required is required...
+    </div>    
+  </div>
+
+  <div class="form-group col-4">
+    <label for="HeadOfFamily">Head Of The Family</label>
+    <input
+      id="HeadOfFamily"
+      type="text"
+      class="form-control"
+      name="HeadOfFamily"
+      formControlName="HeadOfFamily"
+    />
+  </div>
+
+  <div
+    *ngIf="
+    inputhouseform.controls['HeadOfFamily'].invalid &&
+      (inputhouseform.controls['HeadOfFamily'].dirty ||
+      inputhouseform.controls['HeadOfFamily'].touched)
+    "
+    class="alert alert-danger col-4"
+  >
+          <div *ngIf="inputhouseform.controls['HeadOfFamily'].errors?.pattern">
+          This field contains alphabets only...
+          </div>   
+          <div *ngIf="inputhouseform.controls['HeadOfFamily'].errors.required">
+            This field is required is required...
+          </div> 
+
+  </div>
+
+  <div class="form-group col-4">
+      <label for="OwnershipStatus">Owner</label>
+      <select name="OwnershipStatus" class="form-control" id="state" formControlName="OwnershipStatus">
+          <option value="1">Owner</option>
+          <option value="2">Rented</option>
+        </select>
+    </div>
+
+    <div
+    *ngIf="
+    inputhouseform.controls['OwnershipStatus'].invalid &&
+      (inputhouseform.controls['OwnershipStatus'].dirty ||
+      inputhouseform.controls['OwnershipStatus'].touched)
+    "
+    class="alert alert-danger col-4"
+  >
+    <div *ngIf="inputhouseform.controls['OwnershipStatus'].errors.required">
+      This field is required is required...
+    </div>    
+  </div>
+
+  <div class="form-group col-4">
+      <label for="NumberOfFloor">Number Of Floors</label>
+      <input
+        id="NumberOfFloor"
+        type="number"
+        class="form-control"
+        name="NumberOfFloor"
+        formControlName="NumberOfFloor"
+      />
+    </div>
+  
+    <div
+      *ngIf="
+      inputhouseform.controls['NumberOfFloor'].invalid &&
+        (inputhouseform.controls['NumberOfFloor'].dirty ||
+        inputhouseform.controls['NumberOfFloor'].touched)
+      "
+      class="alert alert-danger col-4">
+      <div *ngIf="inputhouseform.controls['NumberOfFloor'].errors.required">
+        Number Of Floors is required...
+      </div>   
+           <div *ngIf="inputhouseform.controls['NumberOfFloor'].errors?.pattern">
+              Number of floors can only be a real number...
+          </div> 
+    </div>
+
+      <div class="form-group col-4">
+      <label for="NumberOfRooms">Number Of Rooms</label>
+      <input
+        id="NumberOfRooms"
+        type="number"
+        class="form-control"
+        name="NumberOfRooms"
+        formControlName="NumberOfRooms"
+      />
+    </div>
+  
+    <div
+      *ngIf="
+      inputhouseform.controls['NumberOfRooms'].invalid &&
+        (inputhouseform.controls['NumberOfRooms'].dirty ||
+        inputhouseform.controls['NumberOfRooms'].touched)
+      "
+      class="alert alert-danger col-4">
+      <div *ngIf="inputhouseform.controls['NumberOfRooms'].errors.required">
+        Number Of Rooms is required...
+      </div>    
+          <div *ngIf="inputhouseform.controls['NumberOfRooms'].errors?.pattern">
+              Number of Rooms can only be a real number...
+          </div>
+    </div>
+
+      <div class="form-group" align="center">
+          <div class="row">
+                <div class="col-sm-6">
+                          <button type="submit"
+            [disabled]="inputhouseform.pristine || inputhouseform.invalid" class="btn btn-success">
+            Register
+          </button>
+                </div>
+                <div class="com-sm-4">
+                    <li class="btn btn-danger" (click)="check()">Reset</li>
+                </div>
+  
+          </div>
+      </div> 
+</form>
+        </div>

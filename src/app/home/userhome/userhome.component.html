@@ -1,0 +1,52 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<div class="container">
+    <div class="page-header">
+        <h1>Hello {{user.userfname}}....<span class="pull-right label label-default">:)</span></h1>
+                    <div *ngIf="onlinemode">
+                            <button class="btn btn-info btn-info" (click)="goingOffline()">
+                                <span class="glyphicon glyphicon-signal"></span> Go Offline
+                             </button>
+            </div>
+            <div *ngIf="! onlinemode">
+                <button class="btn btn-info btn-danger" (click)="goingOnline()">
+                    <span class="glyphicon glyphicon-refresh"></span> Go Online
+                </button>
+            </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="panel with-nav-tabs panel-primary">
+                <div class="panel-heading">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab1primary" data-toggle="tab">House Listing</a></li>
+                            <li><a href="#tab2primary" data-toggle="tab">National Census Register</a></li>
+                        </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab1primary">
+                          <div class=" row">
+                                    <app-houselisting [(onlinemode)]="onlinemode"></app-houselisting>
+                          </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab2primary">
+                              <div class="tab-pane fade in active" id="tab1primary">
+                              <div class="row">
+                                    <app-censusregister [(onlinemode)]="onlinemode"></app-censusregister>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+<br/>

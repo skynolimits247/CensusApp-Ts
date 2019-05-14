@@ -1,0 +1,145 @@
+ <div id="well">
+  <div class="wrapper">
+    <!-- Tabs Titles -->
+      <div class="alert alert-info">Register Here....</div>
+    <div class="container">
+      <form [formGroup]="angForm" (ngSubmit)="onSubmit(angForm)" novalidate>
+          <div *ngIf="error"  class="alert alert-danger"> Unable to Signup Please try again...!
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+          </div>
+          <div class="form-group">
+            <label class="center-block">First Name:
+              <input class="form-control" formControlName="FirstMidName" placeholder="first name">
+            </label>
+          </div>
+          <div *ngIf="angForm.controls['FirstMidName'].invalid && (angForm.controls['FirstMidName'].dirty || angForm.controls['FirstMidName'].touched)" class="alert alert-danger">
+              <div *ngIf="angForm.controls['FirstMidName'].errors.required">
+              Name is required...
+            </div>
+            <div *ngIf="angForm.controls['FirstMidName'].hasError('minlength')">
+                Name can not be less than 5 letters...
+            </div>
+              <div *ngIf="angForm.controls['FirstMidName'].hasError('maxlength')">
+                First name can not be more than 50 letters...
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="center-block">Last Name:
+              <input class="form-control" formControlName="LastName" placeholder="last name">
+            </label>
+          </div>
+          <div *ngIf="angForm.controls['LastName'].invalid && (angForm.controls['LastName'].dirty || angForm.controls['LastName'].touched)" class="alert alert-danger">
+              <div *ngIf="angForm.controls['LastName'].errors.required">
+              Last name required...
+            </div>
+            <div *ngIf="angForm.controls['LastName'].hasError('minlength')">
+                Last name can not be less than 5 letters...
+            </div>
+             <div *ngIf="angForm.controls['LastName'].hasError('maxlength')">
+                Last name can not be more than 50 letters...
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="center-block">Profile Image:
+            <input type="file" class="form-control btn btn-sm btn-default" formControlName="ProfileImage" (change)="onFileChange($event)">
+            </label>
+          </div>
+          <div *ngIf="angForm.controls['ProfileImage'].invalid && (angForm.controls['ProfileImage'].dirty || angForm.controls['ProfileImage'].touched)" class="alert alert-danger">
+              <div *ngIf="angForm.controls['ProfileImage'].errors.required">
+                Profile image required...
+            </div>
+            <div *ngIf="angForm.controls['ProfileImage'].hasError('fileSizeError')">
+                Image size can not be more than 5 MB...
+            </div>
+            <div *ngIf="angForm.controls['ProfileImage'].hasError('fileTypeError')">
+                Image type can only be of format .jpeg, .png and .jpg...
+            </div>
+          </div>
+
+
+            <div class="form-group">
+            <label class="center-block"> Email:
+              <input class="form-control" formControlName="Email" placeholder="email">
+            </label>
+          </div>
+          <div *ngIf="angForm.controls['Email'].invalid && (angForm.controls['Email'].dirty || angForm.controls['Email'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['Email'].invalid || angForm.controls['Email'].errors?.required">
+              Please enter a valid email...
+            </div>
+            <div *ngIf="angForm.controls['Email'].errors?.required">
+              Please enter an email...
+            </div>
+              <div *ngIf="angForm.controls['Email'].errors?.userNameExists">
+              Email already registered please try a different email.....
+              </div>
+             <div *ngIf="angForm.controls['Email'].hasError('maxlength')">
+                Email ID can not be more than 50 letters...
+            </div>
+          </div>
+           <div class="form-group">
+            <label class="center-block"> Password:
+              <input type="password" class="form-control" formControlName="Password" placeholder="password">
+            </label>
+          </div>
+      <div *ngIf="angForm.controls['Password'].invalid && (angForm.controls['Password'].dirty || angForm.controls['Password'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['Password'].errors">
+           Please enter a valid password...
+        </div>
+         <div *ngIf="angForm.controls['Password'].errors?.pattern">
+           Password strength not met...
+        </div>
+      </div>
+
+        <div class="form-group">
+        <label class="center-block"> Confirm Password:
+          <input type="password" class="form-control" formControlName="ConfirmPassword" placeholder="confirm password">
+        </label>
+      </div>
+      <div *ngIf="angForm.controls['ConfirmPassword'].invalid && (angForm.controls['ConfirmPassword'].dirty || angForm.controls['ConfirmPassword'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['ConfirmPassword'].invalid">
+           Password and confirm password do not match...
+          </div>
+      </div>
+
+        <div class="form-group">
+        <label class="center-block"> Aadhar Number:
+          <input type="text" class="form-control" formControlName="AdhaarNumber" placeholder="aadhar number">
+        </label>
+      </div>
+      <div *ngIf="angForm.controls['AdhaarNumber'].invalid && (angForm.controls['AdhaarNumber'].dirty || angForm.controls['AdhaarNumber'].touched)" class="alert alert-danger">
+         <div *ngIf="angForm.controls['AdhaarNumber'].errors?.required">
+           Please enter aadhar number...
+        </div>  
+        
+        <div *ngIf="angForm.controls['AdhaarNumber'].hasError('aadharAlreadyExists')">
+           Aadhar number already registered please try a different aadhar number.....
+          </div>  
+        <div *ngIf="angForm.controls['AdhaarNumber'].hasError('minlength')">
+            Aadhar can not be less than 12-digits...
+        </div>
+         <div *ngIf="angForm.controls['AdhaarNumber'].hasError('maxlength')">
+            Aadhar can not be more than 12-digits...
+        </div>
+        <div *ngIf="angForm.controls['AdhaarNumber'].errors?.pattern">
+           Aadhar number can only be numbers...
+        </div>
+
+      </div>
+
+      <div class="form-group" align="center">
+          <div class="row">
+                <div class="col-sm-6">
+                          <button type="submit"
+            [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success">
+            Register
+          </button>
+                </div>
+                <div class="com-sm-4">
+                    <button class="btn btn-danger" (click)="Reset()">Reset</button>
+                </div>
+          </div>
+      </div>
+    </form>
+</div>
+  </div>

@@ -1,0 +1,22 @@
+<div *ngFor = "let user of userList ">
+  <div *ngIf="user.CurrentStatus == 3 ">
+      <div class="row"> 
+                    <div class="col-sm-3">
+                    <img src="{{user.ProfileImage}}" alt="" height="100" width="100">
+                    
+                    </div>
+                  <div class="col-sm-3">
+                    first name : {{user.FirstMidName}} <br>
+                    last name : {{user.LastName}} <br>
+                    email : {{user.Email}}
+                    
+                  </div>
+      </div>
+         <hr>
+    </div>
+     
+</div>
+ 
+    <div *ngIf="visiblity">
+        <h1>      Sorry...!! No pending users to display...!! </h1>
+    </div>

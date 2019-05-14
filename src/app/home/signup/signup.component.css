@@ -1,0 +1,52 @@
+ /* .well{
+   text-align: center;
+    margin: 0 auto;
+    margin-bottom: auto;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+
+} 
+
+#tempDisp{
+    text-align: center;
+        display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+#well{
+margin: 0 auto;
+width: 400px;
+border-color: #37b1d5;
+border-bottom-color: #37b1d5;
+
+}
+
+input.ng-touched{
+    border-bottom-color: red;
+}
+input.ng-valid{
+    border-bottom-color: #37b1d5;
+    
+}
+.container{
+margin: 0 auto;
+width: 350px;
+}
+
+.form-control{
+    border-bottom-color: #37b1d5;
+    
+}
+
+
+input:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+.form-control {
+
+  border: 1px solid #f6f6f6;
+
+}

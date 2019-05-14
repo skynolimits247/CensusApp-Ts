@@ -1,0 +1,22 @@
+#well{
+border-color: #37b1d5;
+border-bottom-color: #37b1d5;
+
+}
+form{
+    margin-left: 2em;
+    margin-right: 4em;
+}
+input.ng-touched{
+    border-bottom-color: red;
+}
+input.ng-valid{
+    border-bottom-color: #37b1d5;
+    
+}
+select.ng-touched{
+    border-bottom-color: red;
+}
+select.ng-valid{
+    border-bottom-color: #37b1d5; 
+}
